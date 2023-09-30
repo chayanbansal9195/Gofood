@@ -1,10 +1,10 @@
 const express = require("express");
+const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 
-const router = express.Router();
 const jwtSecret = "mynameisabcandabcdefghijklmnop";
 
 router.post(

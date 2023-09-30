@@ -14,8 +14,20 @@ const mongoDb = async () => {
       fetched_data
         .find({})
         .toArray()
-        .then((data) => {
-          //console.log(data);
+        .then(async (data) => {
+          const foodCategory = await mongoose.connection.db.collection(
+            "food_category"
+          );
+          foodCategory
+            .find({})
+            .toArray()
+            .then((catdata) => {
+              global.food_items = data;
+              global.food_category = catdata;
+            });
+        })
+        .catch((e) => {
+          console.log(e);
         })
         .catch((e) => {
           console.log(e);
